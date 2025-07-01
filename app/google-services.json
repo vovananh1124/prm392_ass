@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1015335553161",
+    "project_id": "prm392-ass",
+    "storage_bucket": "prm392-ass.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015335553161:android:338ad2d67ee503223e9e58",
+        "android_client_info": {
+          "package_name": "com.prm392_ass.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAsrqwcFHDheIhbZH9TpTvZMVxGEfBvtY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015335553161:android:252b0c065e0891703e9e58",
+        "android_client_info": {
+          "package_name": "com.prm392_ass.ass_prm392"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAsrqwcFHDheIhbZH9TpTvZMVxGEfBvtY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
