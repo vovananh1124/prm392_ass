@@ -1,4 +1,4 @@
-package com.prm392_ass.ass_prm392;
+package com.fptu.prm391.prm391_project;
 
 import org.junit.Test;
 

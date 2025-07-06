@@ -1,4 +1,4 @@
-package com.prm392_ass.ass_prm392;
+package com.fptu.prm391.prm391_project;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.prm392_ass.ass_prm392", appContext.getPackageName());
+        assertEquals("com.fptu.prm391.prm391_project", appContext.getPackageName());
     }
 }

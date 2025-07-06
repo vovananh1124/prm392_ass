@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ASS_PRM392"
+rootProject.name = "PRM391-PROJECT"
 include(":app")
+ 
