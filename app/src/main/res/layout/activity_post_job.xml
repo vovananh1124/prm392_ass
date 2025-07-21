@@ -91,6 +91,23 @@
             android:inputType="numberDecimal"
             android:layout_marginBottom="8dp"/>
 
+        <EditText
+            android:id="@+id/editTextDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Job Description"/>
+
+        <EditText
+            android:id="@+id/editTextRequirement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Requirements"/>
+
+        <EditText
+            android:id="@+id/editTextDeadline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Deadline (yyyy-MM-dd)"/>
         <Button
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
@@ -99,5 +116,7 @@
             android:backgroundTint="@color/teal_700"
             android:textColor="@android:color/white"
             android:layout_marginTop="12dp"/>
+
+
     </LinearLayout>
 </ScrollView>

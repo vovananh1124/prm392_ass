@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +19,9 @@ import androidx.core.content.ContextCompat;
 import com.bumptech.glide.Glide;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.Source;
 import com.prm392_ass.ass_prm392.R;
 import com.prm392_ass.ass_prm392.entity.Internship;
@@ -30,6 +33,7 @@ import java.util.Map;
 public class InternshipDetailActivity extends AppCompatActivity {
 
     private ProgressBar progressBar;
+    private LinearLayout contentLayout;
     private TextView tvJobTitle, tvCompany, tvLocation, tvDate,
             tvDescription, tvRequirements, tvSalary;
     private ImageView imgCompanyLogo;
@@ -38,6 +42,7 @@ public class InternshipDetailActivity extends AppCompatActivity {
     private Internship currentInternship;
     private Uri selectedCvUri;
     private String selectedCvFileName = "";
+    private String currentApplicationId = null; // Lưu ID application nếu đã nộp
 
     // Launcher để chọn CV từ Drive
     private final ActivityResultLauncher<String[]> pickCvLauncher =
@@ -70,6 +75,7 @@ public class InternshipDetailActivity extends AppCompatActivity {
 
         // Ánh xạ view
         progressBar     = findViewById(R.id.progressBar);
+        contentLayout   = findViewById(R.id.contentLayout); // Layout chứa toàn bộ nội dung, ban đầu bị ẩn
         tvJobTitle      = findViewById(R.id.tvJobTitle);
         tvCompany       = findViewById(R.id.tvCompany);
         tvLocation      = findViewById(R.id.tvLocation);
@@ -82,12 +88,17 @@ public class InternshipDetailActivity extends AppCompatActivity {
         btnApply        = findViewById(R.id.btnApply);
         btnViewMap      = findViewById(R.id.btnViewMap);
 
+        // Mặc định ẩn nội dung, hiện loading
+        contentLayout.setVisibility(LinearLayout.GONE);
+        progressBar.setVisibility(ProgressBar.VISIBLE);
+
         // Nút Upload CV
         btnUploadCV.setOnClickListener(v ->
                 pickCvLauncher.launch(new String[]{"application/pdf"})
         );
         // Nút Apply
         btnApply.setOnClickListener(v -> submitApplication());
+
         // Nút Xem bản đồ (nếu cần)
         /*
         btnViewMap.setOnClickListener(v -> {
@@ -104,9 +115,7 @@ public class InternshipDetailActivity extends AppCompatActivity {
                         "Chưa có vị trí công ty!", Toast.LENGTH_SHORT).show();
             }
         });
-
         */
-
 
         // Lấy internshipId từ Intent và validate
         String internshipId = getIntent().getStringExtra("internshipId");
@@ -122,6 +131,8 @@ public class InternshipDetailActivity extends AppCompatActivity {
 
     private void loadInternshipDetail(@NonNull String internshipId) {
         progressBar.setVisibility(ProgressBar.VISIBLE);
+        contentLayout.setVisibility(LinearLayout.GONE);
+
         FirebaseFirestore.getInstance()
                 .collection("internships")
                 .document(internshipId)
@@ -169,6 +180,7 @@ public class InternshipDetailActivity extends AppCompatActivity {
                         btnUploadCV.setTextColor(
                                 ContextCompat.getColor(this,
                                         android.R.color.white));
+                        btnApply.setEnabled(false);
                     } else {
                         String ago = "N/A";
                         if (posted != null) {
@@ -180,7 +192,11 @@ public class InternshipDetailActivity extends AppCompatActivity {
                                     : days + " ngày trước";
                         }
                         tvDate.setText(ago);
+                        // Sau khi đã hiện dữ liệu, kiểm tra đã ứng tuyển chưa!
+                        checkApplication();
                     }
+                    // SHOW nội dung sau khi load xong!
+                    contentLayout.setVisibility(LinearLayout.VISIBLE);
                     progressBar.setVisibility(ProgressBar.GONE);
                 })
                 .addOnFailureListener(e -> {
@@ -188,6 +204,29 @@ public class InternshipDetailActivity extends AppCompatActivity {
                     Toast.makeText(this,
                             "Lỗi tải dữ liệu: " + e.getMessage(),
                             Toast.LENGTH_SHORT).show();
+                });
+    }
+
+    private void checkApplication() {
+        String uid = FirebaseAuth.getInstance().getUid();
+        if (uid == null || currentInternship == null) return;
+
+        FirebaseFirestore.getInstance().collection("applications")
+                .whereEqualTo("studentId", uid)
+                .whereEqualTo("internshipId", currentInternship.getId())
+                .get()
+                .addOnSuccessListener(query -> {
+                    if (!query.isEmpty()) {
+                        // Đã ứng tuyển, lấy id của doc đó
+                        DocumentSnapshot doc = query.getDocuments().get(0);
+                        currentApplicationId = doc.getId();
+                        btnUploadCV.setText("UPDATE CV");
+                        btnApply.setText("CẬP NHẬT CV");
+                    } else {
+                        currentApplicationId = null;
+                        btnUploadCV.setText("UPLOAD CV/RESUME");
+                        btnApply.setText("APPLY NOW");
+                    }
                 });
     }
 
@@ -209,28 +248,44 @@ public class InternshipDetailActivity extends AppCompatActivity {
         app.put("status", "pending");
         app.put("appliedAt", new Timestamp(new Date()));
 
-        FirebaseFirestore.getInstance()
-                .collection("applications")
-                .add(app)
-                .addOnSuccessListener(ref -> {
-                    Toast.makeText(this,
-                            "Ứng tuyển thành công!",
-                            Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(this, ApplySuccessActivity.class);
-                    i.putExtra("jobTitle", currentInternship.getTitle());
-                    i.putExtra("company", currentInternship.getCompanyName());
-                    i.putExtra("location", currentInternship.getLocation());
-                    i.putExtra("date", tvDate.getText().toString());
-                    i.putExtra("fileName", selectedCvFileName);
-                    startActivity(i);
-                    finish();
-                })
-                .addOnFailureListener(e -> {
-                    btnApply.setEnabled(true);
-                    Toast.makeText(this,
-                            "Lỗi nộp: " + e.getMessage(),
-                            Toast.LENGTH_SHORT).show();
-                });
+        if (currentApplicationId == null) {
+            // CHƯA ỨNG TUYỂN: Thêm mới
+            FirebaseFirestore.getInstance()
+                    .collection("applications")
+                    .add(app)
+                    .addOnSuccessListener(ref -> {
+                        onSuccessApply();
+                    })
+                    .addOnFailureListener(e -> {
+                        btnApply.setEnabled(true);
+                        Toast.makeText(this, "Lỗi nộp: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+        } else {
+            // ĐÃ ỨNG TUYỂN: Update
+            FirebaseFirestore.getInstance()
+                    .collection("applications")
+                    .document(currentApplicationId)
+                    .update(app)
+                    .addOnSuccessListener(ref -> {
+                        onSuccessApply();
+                    })
+                    .addOnFailureListener(e -> {
+                        btnApply.setEnabled(true);
+                        Toast.makeText(this, "Lỗi cập nhật: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+        }
+    }
+
+    private void onSuccessApply() {
+        Toast.makeText(this, "Ứng tuyển thành công!", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this, ApplySuccessActivity.class);
+        i.putExtra("jobTitle", currentInternship.getTitle());
+        i.putExtra("company", currentInternship.getCompanyName());
+        i.putExtra("location", currentInternship.getLocation());
+        i.putExtra("date", tvDate.getText().toString());
+        i.putExtra("fileName", selectedCvFileName);
+        startActivity(i);
+        finish();
     }
 
     /** Lấy tên file từ URI */
