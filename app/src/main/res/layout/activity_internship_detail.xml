@@ -157,7 +157,7 @@
                 android:text="UPLOAD CV/RESUME"
                 android:textAllCaps="true"
                 android:backgroundTint="#FFBF00"
-                android:background="@drawable/btn_upload_cv_bg"
+
                 android:textColor="#fff"
                 android:layout_marginTop="8dp"
                 android:drawableStart="@drawable/baseline_picture_as_pdf_24"
@@ -173,7 +173,7 @@
                 android:textAllCaps="true"
                 android:layout_marginTop="8dp"
                 android:backgroundTint="#FFBF00"
-                android:background="@drawable/btn_upload_cv_bg"
+
                 android:textColor="@color/white"
                 android:drawableStart="@drawable/baseline_location_on_24"
                 android:drawablePadding="22dp"

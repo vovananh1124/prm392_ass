@@ -99,6 +99,15 @@
 
         <!-- Buttons -->
 
+
+        <Button
+
+            android:id="@+id/btnChatRecruiter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="Chat With Recruiter" />
+
         <Button
 
             android:id="@+id/btnBackHome"
@@ -107,6 +116,6 @@
             android:text="BACK TO HOME"
             android:backgroundTint="#201874"
             android:textColor="#FFF"
-            android:layout_marginTop="120dp"/>
+            android:layout_marginTop="30dp"/>
     </LinearLayout>
 </ScrollView>
