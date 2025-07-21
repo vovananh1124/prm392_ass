@@ -1,54 +1,30 @@
+// com.prm392_ass.ass_prm392.entity.Message.java
 package com.prm392_ass.ass_prm392.entity;
 
-import java.security.Timestamp;
-
 public class Message {
-    private String fromId;
-    private String toId;
-    private String message;
-    private Timestamp timestamp;
+    private String senderId;
+    private String content;
+    private long timestamp;
+    private boolean isSeen;
 
+    public Message() {}
 
-    public Message() {
-    }
-
-    public Message(String fromId, String toId, String message, Timestamp timestamp) {
-        this.fromId = fromId;
-        this.toId = toId;
-        this.message = message;
+    public Message(String senderId, String content, long timestamp, boolean isSeen) {
+        this.senderId = senderId;
+        this.content = content;
         this.timestamp = timestamp;
+        this.isSeen = isSeen;
     }
 
+    public String getSenderId() { return senderId; }
+    public void setSenderId(String senderId) { this.senderId = senderId; }
 
-    public String getFromId() {
-        return fromId;
-    }
+    public String getContent() { return content; }
+    public void setContent(String content) { this.content = content; }
 
-    public void setFromId(String fromId) {
-        this.fromId = fromId;
-    }
+    public long getTimestamp() { return timestamp; }
+    public void setTimestamp(long timestamp) { this.timestamp = timestamp; }
 
-    public String getToId() {
-        return toId;
-    }
-
-    public void setToId(String toId) {
-        this.toId = toId;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
+    public boolean isSeen() { return isSeen; }
+    public void setSeen(boolean seen) { isSeen = seen; }
 }

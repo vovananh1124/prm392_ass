@@ -24,6 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.Source;
 import com.prm392_ass.ass_prm392.R;
+import com.prm392_ass.ass_prm392.activity.map.MapActivity;
 import com.prm392_ass.ass_prm392.entity.Internship;
 
 import java.util.Date;
@@ -100,7 +101,6 @@ public class InternshipDetailActivity extends AppCompatActivity {
         btnApply.setOnClickListener(v -> submitApplication());
 
         // Nút Xem bản đồ (nếu cần)
-        /*
         btnViewMap.setOnClickListener(v -> {
             if (currentInternship != null
                     && currentInternship.getLatitude() != null
@@ -115,7 +115,8 @@ public class InternshipDetailActivity extends AppCompatActivity {
                         "Chưa có vị trí công ty!", Toast.LENGTH_SHORT).show();
             }
         });
-        */
+
+
 
         // Lấy internshipId từ Intent và validate
         String internshipId = getIntent().getStringExtra("internshipId");

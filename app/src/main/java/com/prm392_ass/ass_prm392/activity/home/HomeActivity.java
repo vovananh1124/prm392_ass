@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.prm392_ass.ass_prm392.R;
+import com.prm392_ass.ass_prm392.activity.chat.ChatFragment;
 import com.prm392_ass.ass_prm392.activity.fragment.ApplyFragment;
-import com.prm392_ass.ass_prm392.activity.fragment.ChatFragment;
 import com.prm392_ass.ass_prm392.activity.fragment.RecruiterFragment;
 import com.prm392_ass.ass_prm392.activity.fragment.SearchFragment;
 import com.prm392_ass.ass_prm392.activity.fragment.StudentFragment;

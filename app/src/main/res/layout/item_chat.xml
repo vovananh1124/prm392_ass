@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/tvOpponentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Opponent Name"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+id/tvChatLastMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last message preview"
+        android:textSize="14sp"
+        android:layout_below="@id/tvOpponentName"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="4dp"
+        android:maxLines="1"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/tvChatTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time"
+        android:textSize="12sp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"/>
+
+    <ImageView
+        android:id="@+id/imgChatUnread"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/tvChatTime"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/unread_dot"/>
+</RelativeLayout>
