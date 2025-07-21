@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#F8F8F8"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Logo công ty -->
+        <ImageView
+            android:id="@+id/imgCompanyLogo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/a"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Job Title + Info -->
+        <TextView
+            android:id="@+id/tvJobTitle"
+            android:text="UI/UX Designer"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvCompanyAndLocation"
+            android:text="Google  •  California  •  1 day ago"
+            android:textSize="14sp"
+            android:textColor="#888"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- File PDF info -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/bg_pdf_file"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/baseline_picture_as_pdf_24"
+                android:layout_gravity="center_vertical"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginStart="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvPdfFileName"
+                    android:text="Tên file.pdf"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Icon Success -->
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/success"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="28dp"/>
+
+        <!-- Success text -->
+        <TextView
+            android:text="Successful"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginTop="18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:text="Congratulations, your application has been sent"
+            android:textSize="14sp"
+            android:textColor="#666"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Buttons -->
+
+        <Button
+
+            android:id="@+id/btnBackHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BACK TO HOME"
+            android:backgroundTint="#201874"
+            android:textColor="#FFF"
+            android:layout_marginTop="120dp"/>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Background ảnh nền -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.4"
+        android:scaleType="fitXY"
+        android:src="@drawable/background" />
+
+    <!-- Header chào user -->
+
+    <!-- Nội dung Fragment -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="80dp" >
+
+    </FrameLayout>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bg_bottom_nav"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingHorizontal="24dp">
+
+        <!-- Home -->
+        <ImageView
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home"
+            android:padding="8dp"
+            app:tint="@color/nav_icon_color" />
+
+        <!-- Search -->
+        <ImageView
+            android:id="@+id/nav_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_search"
+            android:padding="8dp"
+            app:tint="@color/nav_icon_color" />
+
+        <!-- Add (giữa) -->
+        <ImageView
+            android:id="@+id/nav_add"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_add"
+            android:background="@drawable/rounded_circle_bg"
+            android:padding="12dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            app:tint="@android:color/white" />
+
+        <!-- Chat -->
+        <ImageView
+            android:id="@+id/nav_chat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_chat"
+            android:padding="8dp"
+            app:tint="@color/nav_icon_color" />
+
+        <!-- Apply -->
+        <ImageView
+            android:id="@+id/nav_apply"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_applyhistory"
+            android:padding="8dp"
+            app:tint="@color/nav_icon_color" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F4F4F4"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/txtGreeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello, User"
+            android:textColor="#222222"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

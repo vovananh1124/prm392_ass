@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -11,18 +11,52 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ASS_PRM392"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+
+        <!-- Màn hình chính sau login -->
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.home.HomeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ASS_PRM392" />
+
+        <!-- Filter dành cho StudentFragment -->
+        <activity
+            android:name=".activity.home.FilterActivity"
+            android:exported="true" />
+
+        <!-- Tạo / chỉnh sửa Job (Recruiter) -->
+        <activity
+            android:name=".activity.home.PostJobActivity"
+            android:exported="true" />
+
+        <!-- Authentication -->
+        <activity
+            android:name=".activity.authentication.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.authentication.LoginActivity"
             android:exported="true"
-            android:theme="@style/Theme.ASS_PRM392" >
+            android:theme="@style/Theme.ASS_PRM392">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Lịch sử ứng tuyển -->
+        <activity
+            android:name=".activity.application.ApplicationHistoryActivity"
+            android:exported="false" />
+
+        <!-- Internship flow -->
+        <activity
+            android:name=".activity.internship.InternshipDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.internship.DrivePickerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.internship.ApplySuccessActivity"
+            android:exported="false" />
     </application>
-
 </manifest>
-

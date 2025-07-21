@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="1dp"
+    android:background="#F8F8F8">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- ✅ Loading indicator -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible" />
+
+        <!-- ✅ Nội dung chính, ban đầu bị ẩn -->
+        <LinearLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/imgCompanyLogo"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/a" />
+
+            <TextView
+                android:id="@+id/tvJobTitle"
+                android:text="UI/UX Designer"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:id="@+id/tvCompany"
+                    android:textStyle="bold"
+                    android:textColor="#333"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:text="•"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:id="@+id/tvLocation"
+                    android:textStyle="bold"
+                    android:textColor="#333"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:text="•"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:textStyle="bold"
+                    android:textColor="#333"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!-- Description -->
+            <TextView android:text="Description"
+                android:textStyle="bold"
+                android:layout_marginTop="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:padding="12dp"
+                android:text="..." />
+
+            <!-- Requirements -->
+            <TextView android:text="Requirements"
+                android:textStyle="bold"
+                android:layout_marginTop="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvRequirements"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:padding="12dp"
+                android:text="..." />
+
+            <!-- Salary -->
+            <TextView android:text="Salary"
+                android:textStyle="bold"
+                android:layout_marginTop="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvSalary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:padding="12dp"
+                android:text="..." />
+
+            <!-- Upload CV -->
+            <TextView
+                android:text="Upload CV"
+                android:textStyle="bold"
+                android:layout_marginTop="44dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Add your CV/Resume to apply for a job"
+                android:textSize="13sp"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btnUploadCV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="UPLOAD CV/RESUME"
+                android:textAllCaps="true"
+                android:backgroundTint="#FFBF00"
+                android:background="@drawable/btn_upload_cv_bg"
+                android:textColor="#fff"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/baseline_picture_as_pdf_24"
+                android:drawablePadding="22dp"
+
+                />
+
+            <Button
+                android:id="@+id/btnViewMap"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="XEM VỊ TRÍ BẢN ĐỒ"
+                android:textAllCaps="true"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#FFBF00"
+                android:background="@drawable/btn_upload_cv_bg"
+                android:textColor="@color/white"
+                android:drawableStart="@drawable/baseline_location_on_24"
+                android:drawablePadding="22dp"
+                />
+
+
+
+            <Button
+                android:id="@+id/btnApply"
+                android:text="APPLY NOW"
+                android:layout_marginTop="55dp"
+                android:backgroundTint="#201874"
+                android:textColor="#fff"
+                android:layout_width="match_parent"
+                android:background="@drawable/btn_upload_cv_bg"
+                android:layout_height="48dp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
